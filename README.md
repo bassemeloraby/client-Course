@@ -89,3 +89,61 @@ Web Frontend MERN Favicon 2-3
 ===================================
 https://favicon.io/
 
+>> assets folder
+favicon.ico
+
+>> index.html
+
+<link rel="icon" type="image/svg+xml" href="/src/assets/favicon.ico" />
+
+
+----------------------------------------
+Web Frontend MERN daisyui 2-4
+===================================
+https://daisyui.com/
+
+```sh
+npm i  -D daisyui@latest @tailwindcss/typography
+```
+
+>> tailwind.config.cjs
+
+```js
+{
+ plugins: [require('@tailwindcss/typography'), require('daisyui')],
+}
+```
+
+----------------------------------------
+Web Frontend MERN Pages 2-5
+===================================
+- create pages directory
+- create all pages and export from index.js
+- About, Error,
+  HomeLayout, Landing,
+  Products, SingleProduct
+
+
+>> pages/index.js
+export { default as HomeLayout } from './HomeLayout';
+
+- import in app.jsx
+
+>> App.jsx
+
+```js
+import {
+  HomeLayout,
+  Landing,
+  Error,
+  Products,
+  SingleProduct,
+  About,
+} from './pages';
+```
+--------------------------------------------------
+
+
+
+
+
