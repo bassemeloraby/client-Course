@@ -158,22 +158,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: "products",
-        element: <Products />,
-      },
-      {
-        path: "products/:id",
-        element: <SingleProduct />,
-      },
-      { path: "about", element: <About /> },
-    ],
   },
   {
     path: "/login",
@@ -191,3 +175,38 @@ const App = () => {
 ```
 
 ---
+# Web Frontend MERN React Router { Outlet } 2-6
+
+
+ children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "products/:id",
+        element: <SingleProduct />,
+      },
+      { path: "about", element: <About /> },
+    ],
+
+
+    >> HomeLayout.jsx
+import { Fragment } from "react";
+import { Outlet } from 'react-router-dom';
+
+const HomeLayout = () => {
+  return (
+    <Fragment>
+      <nav>
+        <span className="text-4xl text-primary">My App</span>
+      </nav>
+      <Outlet />
+    </Fragment>
+  );
+};
+export default HomeLayout;
