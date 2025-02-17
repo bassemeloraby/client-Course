@@ -1,26 +1,25 @@
-Web Frontend MERN React Vite 2-1
-=================================
-https://vite.dev/
+# Web Frontend MERN React Vite 2-1
 
+https://vite.dev/
 
 npm create vite@latest . -- --template react
 
 npm install
 
-npm run dev
-----------------------------------------------------------
-Web Frontend MERN Tailwind 2-2
-===================================
-https://tailwindcss.com/
+## npm run dev
 
+# Web Frontend MERN Tailwind 2-2
+
+https://tailwindcss.com/
 
 ```sh
 npm install -D tailwindcss@3.4.17 postcss autoprefixer
 npx tailwindcss init -p
 ```
+
 - rename to tailwind.config.cjs
-Key Differences:
-Syntax:
+  Key Differences:
+  Syntax:
 
 tailwind.config.js uses export default.
 
@@ -32,7 +31,6 @@ Use tailwind.config.js if your project supports ES modules.
 
 Use tailwind.config.cjs if your project uses CommonJS or if you encounter issues with ES modules.
 
-
 - add following content
 
 tailwind.config.cjs
@@ -40,13 +38,14 @@ tailwind.config.cjs
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {},
   },
   plugins: [],
 };
 ```
+
 - remove App.css
 - delete contents of index.css
 - delete contents of App.jsx
@@ -79,34 +78,35 @@ Tailwind directives are instructions that decide how Tailwind CSS creates the st
 
 ```js
 const App = () => {
-  return <h1 className='text-7xl font-bold underline'>Tailwind project</h1>;
+  return <h1 className="text-7xl font-bold underline">Tailwind project</h1>;
 };
 export default App;
 ```
 
-----------------------------------------------------------
-Web Frontend MERN Favicon 2-3
-===================================
+---
+
+# Web Frontend MERN Favicon 2-3
+
 https://favicon.io/
 
->> assets folder
-favicon.ico
+> > assets folder
+> > favicon.ico
 
->> index.html
+> > index.html
 
 <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.ico" />
 
+---
 
-----------------------------------------
-Web Frontend MERN daisyui 2-4
-===================================
+# Web Frontend MERN daisyui 2-4
+
 https://daisyui.com/
 
 ```sh
 npm i  -D daisyui@latest @tailwindcss/typography
 ```
 
->> tailwind.config.cjs
+> > tailwind.config.cjs
 
 ```js
 {
@@ -114,24 +114,35 @@ npm i  -D daisyui@latest @tailwindcss/typography
 }
 ```
 
-----------------------------------------
-Web Frontend MERN Pages 2-5
-===================================
+---
+
+# Web Frontend MERN Pages 2-5
+
+https://reactrouter.com/home
+
+https://www.npmjs.com/package/react-router-dom
+
 - create pages directory
 - create all pages and export from index.js
 - About, Error,
   HomeLayout, Landing,
-  Products, SingleProduct
+  Products, SingleProduct, Login,
+  Register,
 
+> > pages/index.js
 
->> pages/index.js
 export { default as HomeLayout } from './HomeLayout';
+
+> > terminal
+> > npm i react-router-dom
 
 - import in app.jsx
 
->> App.jsx
+> > App.jsx
 
 ```js
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import {
   HomeLayout,
   Landing,
@@ -139,11 +150,44 @@ import {
   Products,
   SingleProduct,
   About,
-} from './pages';
+  Login,
+  Register,
+} from "./pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "products/:id",
+        element: <SingleProduct />,
+      },
+      { path: "about", element: <About /> },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+]);
+
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 ```
---------------------------------------------------
 
-
-
-
-
+---
