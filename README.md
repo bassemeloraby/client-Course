@@ -274,13 +274,13 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 ---
 
-# Web Frontend MERN navBar 2-9
+# Web Frontend MERN NavBar 2-9
 
 - create folder components
 - create file Navbar.jsx
-- create file index.jsx
+- create file index.js
 
-> > index.jsx
+> > index.js
 > > export { default as Navbar } from './Navbar';
 
 > > HomeLayout
@@ -290,88 +290,120 @@ import { FaFacebookSquare } from "react-icons/fa";
 > > Navbar.jsx
 
  <nav className="bg-base-200">
-        < className="navbar align-element ">
-          <div className="navbar-start">
-           start
-          </div>
-          <div className='navbar-center hidden lg:flex'>
-          center
-        </div>
-          
-          <div className="navbar-end">
-        end    
-        </div>
-      </nav>
+      <div className="navbar align-element ">
+        <div className="navbar-start">start</div>
+        <div className="navbar-center">center</div>
+        <div className="navbar-end">end</div>
+      </div>
+    </nav>
 
 ----> start
 
-{/_ TITLE _/}
-<NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center'
+> > Navbar.jsx
+> > {/_ TITLE _/}
+
+          <NavLink
+            to="/"
+            className=" lg:flex btn btn-primary text-3xl items-center"
           >
-P
-</NavLink>
+            P
+          </NavLink>
 
-           {/* DROPDOWN */}
-          <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <FaBarsStaggered className='h-6 w-6' />
-            </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              NavLinks
-            </ul>
-          </div>
 
-* The tabIndex={0} attribute makes the element focusable, allowing it to be interacted with via keyboard navigation.
 
 
 ----> center
 
-         <ul className='menu menu-horizontal'>
-            NavLinks 
+         <<ul className="menu menu-horizontal">
+            <NavLinks />
           </ul>
 
 -create file NavLinks.jsx
 
->> NavLinks.jsx
+> > NavLinks.jsx
 
 import { NavLink } from 'react-router-dom';
 
 const links = [
-  { id: 1, url: '/', text: 'home' },
-  { id: 2, url: 'about', text: 'about' },
-  { id: 3, url: 'products', text: 'products' },
+{ id: 1, url: '/', text: 'home' },
+{ id: 2, url: 'about', text: 'about' },
+{ id: 3, url: 'products', text: 'products' },
 ];
 
-
 const NavLinks = () => {
-  const user = useSelector((state) => state.userState.user);
-  return (
-    <>
-      {links.map((link) => {
-        const { id, url, text } = link;
-        return (
-          <li key={id}>
-            <NavLink className='capitalize' to={url}>
-              {text}
-            </NavLink>
-          </li>
-        );
-      })}
-    </>
-  );
+return (
+<>
+{links.map((link) => {
+const { id, url, text } = link;
+return (
+
+<li key={id}>
+<NavLink className='capitalize' to={url}>
+{text}
+</NavLink>
+</li>
+);
+})}
+</>
+);
 };
 export default NavLinks;
 
-
->> Navbar.jsx
+> > Navbar.jsx
 
 import NavLinks from './NavLinks';
 
 <NavLinks />
 
------------------------------------------
+---
+# Web Frontend MERN Custom Class 2-10
+
+-create Header.jsx
+
+>> Header.jsx
+
+import { Link } from 'react-router-dom';
+
+const Header = () => {
+  return (
+    <header className=' bg-neutral py-2 text-neutral-content '>
+      <div className='align-element flex justify-center sm:justify-end '>
+        {/* USER */}
+        {/* LINKS */}
+        <div className='flex gap-x-6 justify-center items-center'>
+          <Link to='/login' className='link link-hover text-xs sm:text-sm'>
+            Sign in / Guest
+          </Link>
+          <Link to='/register' className='link link-hover text-xs sm:text-sm'>
+            Create an Account
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+};
+export default Header;
+
+-----------------------------
+# Web Frontend MERN Custom Class 2-11
+
+-create custom class
+-align content
+-add to HomeLayout Outlet component
+
+>> index.css
+
+@layer components {
+  .align-element {
+    @apply mx-auto max-w-6xl px-8;
+  }
+}
+
+>> HomeLayout.jsx
+
+<section className='align-element py-20'>
+  <Outlet />
+</section>
+
+
+>> 

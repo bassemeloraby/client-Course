@@ -1,14 +1,11 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
-import { FaFacebookSquare } from "react-icons/fa";
+import { Navbar } from "../components";
 
 const HomeLayout = () => {
   return (
     <Fragment>
-      <nav>
-        <span className="text-4xl text-primary">My App</span>
-        <FaFacebookSquare />
-      </nav>
+      <Navbar />
       <Outlet />
     </Fragment>
   );
