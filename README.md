@@ -356,9 +356,14 @@ import NavLinks from './NavLinks';
 <NavLinks />
 
 ---
-# Web Frontend MERN Custom Class 2-10
+# Web Frontend MERN Header 2-10
 
--create Header.jsx
+- create Header.jsx
+- add to index.js
+
+>> HomeLayout.jsx
+
+<Header/>
 
 >> Header.jsx
 
@@ -366,17 +371,49 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className=' bg-neutral py-2 text-neutral-content '>
-      <div className='align-element flex justify-center sm:justify-end '>
+    <header className=" bg-neutral py-2 text-neutral-content ">
+      <div className="align-element flex justify-center sm:justify-end ">
         {/* USER */}
         {/* LINKS */}
-        <div className='flex gap-x-6 justify-center items-center'>
-          <Link to='/login' className='link link-hover text-xs sm:text-sm'>
-            Sign in / Guest
-          </Link>
-          <Link to='/register' className='link link-hover text-xs sm:text-sm'>
-            Create an Account
-          </Link>
+        <div className="flex gap-x-6 justify-center items-center">
+          <div className="flex gap-x-6 justify-center items-center">
+            <Link to="/login" className="link link-hover text-xs sm:text-sm">
+              Sign in / Guest
+            </Link>
+            <Link to="/register" className="link link-hover text-xs sm:text-sm">
+              Create an Account
+            </Link>
+          </div>
+        </div>
+      </div>
+    </header> <header className=" bg-neutral py-2 text-neutral-content ">
+      <div className="align-element flex justify-center sm:justify-end ">
+        {/* USER */}
+        {/* LINKS */}
+        <div className="flex gap-x-6 justify-center items-center">
+          <div className="flex gap-x-6 justify-center items-center">
+            <Link to="/login" className="link link-hover text-xs sm:text-sm">
+              Sign in / Guest
+            </Link>
+            <Link to="/register" className="link link-hover text-xs sm:text-sm">
+              Create an Account
+            </Link>
+          </div>
+        </div>
+      </div>
+    </header> <header className=" bg-neutral py-2 text-neutral-content ">
+      <div className="align-element flex justify-center sm:justify-end ">
+        {/* USER */}
+        {/* LINKS */}
+        <div className="flex gap-x-6 justify-center items-center">
+          <div className="flex gap-x-6 justify-center items-center">
+            <Link to="/login" className="link link-hover text-xs sm:text-sm">
+              Sign in / Guest
+            </Link>
+            <Link to="/register" className="link link-hover text-xs sm:text-sm">
+              Create an Account
+            </Link>
+          </div>
         </div>
       </div>
     </header>
@@ -406,4 +443,5 @@ export default Header;
 </section>
 
 
->> 
+>> about.jsx
+
