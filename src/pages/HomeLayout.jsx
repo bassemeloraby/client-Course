@@ -7,7 +7,9 @@ const HomeLayout = () => {
     <Fragment>
       <Header />
       <Navbar />
-      <Outlet />
+      <section className="align-element py-20">
+        <Outlet />
+      </section>
     </Fragment>
   );
 };
