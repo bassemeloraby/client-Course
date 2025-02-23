@@ -309,9 +309,6 @@ import { FaFacebookSquare } from "react-icons/fa";
             P
           </NavLink>
 
-
-
-
 ----> center
 
          <<ul className="menu menu-horizontal">
@@ -356,94 +353,95 @@ import NavLinks from './NavLinks';
 <NavLinks />
 
 ---
+
 # Web Frontend MERN Header 2-10
 
 - create Header.jsx
 - add to index.js
 
->> HomeLayout.jsx
+> > HomeLayout.jsx
 
 <Header/>
 
->> Header.jsx
+> > Header.jsx
 
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  return (
-    <header className=" bg-neutral py-2 text-neutral-content ">
-      <div className="align-element flex justify-center sm:justify-end ">
-        {/* USER */}
-        {/* LINKS */}
-        <div className="flex gap-x-6 justify-center items-center">
-          <div className="flex gap-x-6 justify-center items-center">
-            <Link to="/login" className="link link-hover text-xs sm:text-sm">
-              Sign in / Guest
-            </Link>
-            <Link to="/register" className="link link-hover text-xs sm:text-sm">
-              Create an Account
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header> <header className=" bg-neutral py-2 text-neutral-content ">
-      <div className="align-element flex justify-center sm:justify-end ">
-        {/* USER */}
-        {/* LINKS */}
-        <div className="flex gap-x-6 justify-center items-center">
-          <div className="flex gap-x-6 justify-center items-center">
-            <Link to="/login" className="link link-hover text-xs sm:text-sm">
-              Sign in / Guest
-            </Link>
-            <Link to="/register" className="link link-hover text-xs sm:text-sm">
-              Create an Account
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header> <header className=" bg-neutral py-2 text-neutral-content ">
-      <div className="align-element flex justify-center sm:justify-end ">
-        {/* USER */}
-        {/* LINKS */}
-        <div className="flex gap-x-6 justify-center items-center">
-          <div className="flex gap-x-6 justify-center items-center">
-            <Link to="/login" className="link link-hover text-xs sm:text-sm">
-              Sign in / Guest
-            </Link>
-            <Link to="/register" className="link link-hover text-xs sm:text-sm">
-              Create an Account
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+return (
+<header className=" bg-neutral py-2 text-neutral-content ">
+<div className="align-element flex justify-center sm:justify-end ">
+{/_ USER _/}
+{/_ LINKS _/}
+<div className="flex gap-x-6 justify-center items-center">
+<div className="flex gap-x-6 justify-center items-center">
+<Link to="/login" className="link link-hover text-xs sm:text-sm">
+Sign in / Guest
+</Link>
+<Link to="/register" className="link link-hover text-xs sm:text-sm">
+Create an Account
+</Link>
+</div>
+</div>
+</div>
+</header> <header className=" bg-neutral py-2 text-neutral-content ">
+<div className="align-element flex justify-center sm:justify-end ">
+{/_ USER _/}
+{/_ LINKS _/}
+<div className="flex gap-x-6 justify-center items-center">
+<div className="flex gap-x-6 justify-center items-center">
+<Link to="/login" className="link link-hover text-xs sm:text-sm">
+Sign in / Guest
+</Link>
+<Link to="/register" className="link link-hover text-xs sm:text-sm">
+Create an Account
+</Link>
+</div>
+</div>
+</div>
+</header> <header className=" bg-neutral py-2 text-neutral-content ">
+<div className="align-element flex justify-center sm:justify-end ">
+{/_ USER _/}
+{/_ LINKS _/}
+<div className="flex gap-x-6 justify-center items-center">
+<div className="flex gap-x-6 justify-center items-center">
+<Link to="/login" className="link link-hover text-xs sm:text-sm">
+Sign in / Guest
+</Link>
+<Link to="/register" className="link link-hover text-xs sm:text-sm">
+Create an Account
+</Link>
+</div>
+</div>
+</div>
+</header>
+);
 };
 export default Header;
 
------------------------------
+---
+
 # Web Frontend MERN Custom Class 2-11
 
 -create custom class
 -align content
 -add to HomeLayout Outlet component
 
->> index.css
+> > index.css
 
 @layer components {
-  .align-element {
-    @apply mx-auto max-w-6xl px-8;
-  }
+.align-element {
+@apply mx-auto max-w-6xl px-8;
+}
 }
 
->> HomeLayout.jsx
+> > HomeLayout.jsx
 
 <section className='align-element py-20'>
   <Outlet />
 </section>
 
-
->> about.jsx
+> > about.jsx
 
 <Fragment>
       <div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
@@ -464,4 +462,37 @@ export default Header;
         aut! Perferendis ipsa cumque ipsam nostrum reprehenderit ad illo sed
         officiis ea tempore! Similique eos minima sit porro, ratione aspernatur!
       </p>
+    </Fragment>
+
+    -------------------------------------------
+    # Web Frontend MERN Landing page 2-12
+
+-create Hero.jsx
+
+    >> Hero.jsx
+
+     <div className='grid lg:grid-cols-2 gap-24 items-center'>
+    <div>
+      <h1 className='max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl'>
+        We are learning web developer how to create Apps
+      </h1>
+      <p className='mt-8 max-w-xl text-lg leading-8'>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
+        repellat explicabo enim soluta temporibus asperiores aut obcaecati
+        perferendis porro nobis.
+      </p>
+      <div className='mt-10'>
+        <Link to='/products' className='btn btn-primary'>
+          Our Products
+        </Link>
+      </div>
+    </div>
+
+  </div>
+
+> > Landing.jsx
+
+   <Fragment>
+
+      <Hero />
     </Fragment>
