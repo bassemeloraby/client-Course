@@ -11,6 +11,9 @@ import {
   Register,
 } from "./pages";
 
+// loaders
+import { loader as productsLoader } from "./pages/Products";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+        loader: productsLoader,
       },
       {
         path: "/products/:id",
