@@ -13,6 +13,7 @@ import {
 
 // loaders
 import { loader as productsLoader } from "./pages/Products";
+import { loader as singleProductLoader } from "./pages/SingleProduct";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <SingleProduct />,
+        loader: singleProductLoader,
       },
       {
         path: "/about",
