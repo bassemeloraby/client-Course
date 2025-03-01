@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { ProductsList } from "../components";
 import { customFetch } from "../utils";
+import { Link } from "react-router-dom";
 
 const url = "/products";
 
@@ -19,6 +20,11 @@ export const loader = async () => {
 const Products = () => {
   return (
     <div>
+      <section>
+        <Link to="/create-product" className="btn btn-primary capitalize">
+          create
+        </Link>
+      </section>
       <ProductsList />
     </div>
   );
