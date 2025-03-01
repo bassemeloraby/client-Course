@@ -1,16 +1,17 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 
 import { customFetch } from "../utils";
 import { toast } from "react-toastify";
 
 const url = "/products";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const loader = async ({ params }) => {
   const { id } = params;
   console.log(id);
   const response = await customFetch(`${url}/${id}`);
   const product = response.data;
-  
+
   if (!product) {
     toast.error("No product found!");
   } else {
@@ -25,6 +26,21 @@ const SingleProduct = () => {
 
   const { tradeName, price } = product;
 
+  const navigate = useNavigate();
+
+  const deleteHandler = async () => {
+    try {
+      const response = await customFetch.delete(`${url}/${product._id}`);
+      console.log(response);
+      toast.success("Product deleted successfully!");
+      return navigate("/");
+    } catch (error) {
+      const errorMessage = error?.response?.data?.error?.message;
+      toast.error(errorMessage);
+      return null;
+    }
+  };
+
   return (
     <section>
       <div className="text-md breadcrumbs">
@@ -37,6 +53,11 @@ const SingleProduct = () => {
           </li>
         </ul>
       </div>
+      <section>
+        <button onClick={deleteHandler} className="btn btn-primary capitalize">
+          delete
+        </button>
+      </section>
 
       {/*product */}
       <div>
