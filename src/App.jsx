@@ -10,14 +10,17 @@ import {
   Login,
   Register,
   ProductCreate,
+  ProductUpdate,
 } from "./pages";
 
 // loaders
 import { loader as productsLoader } from "./pages/Products";
 import { loader as singleProductLoader } from "./pages/SingleProduct";
+import { loader as UpdateProductLoader } from "./pages/ProductUpdate";
 
 // actions
 import { action as createProductAction } from "./pages/ProductCreate";
+import { action as updateProductAction } from "./pages/ProductUpdate";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +47,12 @@ const router = createBrowserRouter([
         path: "/create-product",
         element: <ProductCreate />,
         action: createProductAction, // use the action to create a new product
+      },
+      {
+        path: "/update-product/:id",
+        element: <ProductUpdate />,
+        loader: UpdateProductLoader,
+        action: updateProductAction, // use the action to update a product
       },
       {
         path: "/about",

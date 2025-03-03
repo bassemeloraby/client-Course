@@ -57,6 +57,12 @@ const SingleProduct = () => {
         <button onClick={deleteHandler} className="btn btn-primary capitalize">
           delete
         </button>
+        <Link
+          to={`/update-product/${product._id}`}
+          className="btn btn-success capitalize ms-1"
+        >
+          edit
+        </Link>
       </section>
 
       {/*product */}

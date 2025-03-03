@@ -7,3 +7,4 @@ export { default as Products } from "./Products";
 export { default as Register } from "./Register";
 export { default as SingleProduct } from "./SingleProduct";
 export { default as ProductCreate } from "./ProductCreate";
+export { default as ProductUpdate } from "./ProductUpdate";
