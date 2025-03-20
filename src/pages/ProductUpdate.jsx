@@ -1,7 +1,9 @@
 import { toast } from "react-toastify";
 import { customFetch } from "../utils";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const url = "/products";
 
@@ -49,6 +51,16 @@ export const action = async ({ request, params }) => {
 const ProductUpdate = () => {
   const { product } = useLoaderData();
   const { tradeName, price } = product;
+
+  const userRole = useSelector((state) => state.auth.user?.userRole);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userRole !== "admin") {
+      navigate("/");
+    }
+  }, [navigate, userRole]);
 
   return (
     <section className="h-screen grid items-start">

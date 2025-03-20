@@ -1,8 +1,10 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 
 import { customFetch } from "../utils";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const url = "/products";
 
@@ -27,6 +29,16 @@ export const action = async ({ request }) => {
 };
 
 const ProductCreate = () => {
+  const userRole = useSelector((state) => state.auth.user?.userRole);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userRole !== "admin") {
+      navigate("/");
+    }
+  }, [navigate, userRole]);
+
   return (
     <section className="h-screen grid ">
       <Form

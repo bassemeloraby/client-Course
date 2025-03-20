@@ -21,6 +21,13 @@ import { loader as UpdateProductLoader } from "./pages/ProductUpdate";
 // actions
 import { action as createProductAction } from "./pages/ProductCreate";
 import { action as updateProductAction } from "./pages/ProductUpdate";
+import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+
+
+import { store } from "./app/store";
+import AuthGuard from "./components/AuthGuard";
+
 
 const router = createBrowserRouter([
   {
@@ -35,22 +42,38 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products />,
+        element: (
+          <AuthGuard>
+            <Products />
+          </AuthGuard>
+        ),
         loader: productsLoader,
       },
       {
         path: "/products/:id",
-        element: <SingleProduct />,
+        element: (
+          <AuthGuard>
+            <SingleProduct />
+          </AuthGuard>
+        ),
         loader: singleProductLoader,
       },
       {
         path: "/create-product",
-        element: <ProductCreate />,
+        element: (
+          <AuthGuard>
+            <ProductCreate />
+          </AuthGuard>
+        ),
         action: createProductAction, // use the action to create a new product
       },
       {
         path: "/update-product/:id",
-        element: <ProductUpdate />,
+        element: (
+          <AuthGuard>
+            <ProductUpdate />
+          </AuthGuard>
+        ),
         loader: UpdateProductLoader,
         action: updateProductAction, // use the action to update a product
       },
@@ -64,11 +87,13 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
+    action: loginAction(store), // use the action to login a user
   },
   {
     path: "/register",
     element: <Register />,
     errorElement: <Error />,
+    action: registerAction, // use the action to register a new user
   },
 ]);
 

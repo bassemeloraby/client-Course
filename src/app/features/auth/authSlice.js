@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const themes = {
   winter: "winter",
@@ -30,10 +31,24 @@ export const authSlice = createSlice({
       document.documentElement.setAttribute("data-theme", state.theme);
       localStorage.setItem("theme", state.theme);
     },
+    loginUser: (state, action) => {
+      console.log(action.payload);
+      const user = {
+        username: action.payload.username,
+        userRole: action.payload.role,
+        token: action.payload.jwt,
+      };
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
+    },
+    logoutUser: (state) => {
+      state.user = null;
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully");
+    },
   },
 });
 
-
-export const { toggleTheme } = authSlice.actions;
+export const { toggleTheme, loginUser, logoutUser } = authSlice.actions;
 
 export default authSlice.reducer;
